@@ -1,7 +1,6 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
 
-
 public class PlayerShoot : NetworkBehaviour
 {
     private const string PLAYER_TAG = "Player";
@@ -38,14 +37,17 @@ public class PlayerShoot : NetworkBehaviour
         {
             if(_hit.collider.tag == PLAYER_TAG)
             {
-                CmdPlayerShot(_hit.collider.name);
+                CmdPlayerShot(_hit.collider.name, weapon.damage);
             }
         }
     }
 
     [Command]
-    void CmdPlayerShot (string _ID)
+    void CmdPlayerShot (string _playerID, int _damage)
     {
-        Debug.Log (_ID + " has been shot.");
+        Debug.Log (_playerID + " has been shot.");
+
+       Player _player = GameManager.GetPlayer(_playerID);
+       _player.TakeDamage(_damage);
     }
 }

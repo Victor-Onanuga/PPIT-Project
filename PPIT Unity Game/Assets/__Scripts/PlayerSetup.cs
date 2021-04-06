@@ -27,8 +27,8 @@ public class PlayerSetup : NetworkBehaviour
             {
                 sceneCamera.gameObject.SetActive(false);
             }
-            
         }
+        GetComponent<Player>().Setup();
     }
 
     // Setting up and registering the player

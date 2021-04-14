@@ -189,6 +189,10 @@ MonoBehaviour:
   - {fileID: 6397301816390131681}
   - {fileID: 5261594554489526330}
   remoteLayerName: RemotePlayer
+  dontDrawLayerName: DontDraw
+  playerGraphics: {fileID: 8125482131179610555}
+  playerUIPrefab: {fileID: 3826742219653710186, guid: b703d789dc464ec4ebb71792d250136b,
+    type: 3}
 --- !u!114 &-8572112876514443570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +246,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 9.08, y: 3.73, z: 1.73}
+  m_ConnectedAnchor: {x: 9.08, y: 1, z: 1.73}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

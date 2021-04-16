@@ -11,6 +11,7 @@ public class WeaponManager : NetworkBehaviour
     [SerializeField] private PlayerWeapons primaryWeapon;
 
     private PlayerWeapons currentWeapon;
+    private WeaponGraphics currentGraphics;
 
     void Start()
     {
@@ -22,14 +23,25 @@ public class WeaponManager : NetworkBehaviour
         return currentWeapon;
     }
 
+    public WeaponGraphics GetCurrentGraphics()
+    {
+        return currentGraphics;
+    }
+
     void EquipWeapon(PlayerWeapons _weapon)
     {
         currentWeapon = _weapon;
 
          GameObject _weaponIns = (GameObject)Instantiate(_weapon.graphics, weaponHolder.position, weaponHolder.rotation);
          _weaponIns.transform.SetParent(weaponHolder);
+
+        currentGraphics = _weaponIns.GetComponent<WeaponGraphics>();
+        if(currentGraphics == null)
+            Debug.LogError ("No WeaponGraphics component on the weapon object: " + _weaponIns.name);
+
+        // if local player change layer of the weapon 
          if(isLocalPlayer)
-             _weaponIns.layer = LayerMask.NameToLayer(weaponLayerName);
+            Utility.SetLayerRecursively(_weaponIns, LayerMask.NameToLayer(weaponLayerName));
          
     }
 }

@@ -1,5 +1,7 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent (typeof (WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
@@ -109,7 +111,7 @@ public class PlayerShoot : NetworkBehaviour
     {
         Debug.Log (_playerID + " has been shot.");
 
-       Player _player = GameManager.GetPlayer(_playerID);
+        Player _player = GameManager.GetPlayer(_playerID);
        _player.RpcTakeDamage(_damage);
     }
 }

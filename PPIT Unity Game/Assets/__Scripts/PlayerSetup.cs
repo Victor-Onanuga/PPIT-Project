@@ -3,6 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerController))]
@@ -38,8 +39,10 @@ public class PlayerSetup : NetworkBehaviour
             if(ui == null)
                 Debug.LogError("No PlayerUI component on PlayerUI prefab!");
             ui.SetController(GetComponent<PlayerController>());
+
+            GetComponent<Player>().SetupPlayer();
         }
-        GetComponent<Player>().Setup();
+        
     }
 
     void SetLayerRecursively (GameObject obj, int newLayer)
@@ -82,8 +85,9 @@ public class PlayerSetup : NetworkBehaviour
     {
         Destroy(playerUIInstance);
 
-        // When  no longer active as a player switch to scene camera
-        GameManager.instance.SetSceneCameraActive(true);
+        if(isLocalPlayer)
+            // When  no longer active as a player switch to scene camera
+            GameManager.instance.SetSceneCameraActive(true);
 
         GameManager.UnRegisterPlayer(transform.name);
 

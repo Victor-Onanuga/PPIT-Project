@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using DatabaseControl; // << Remember to add this reference to your scripts which use DatabaseControl
+using UnityEngine.SceneManagement;
 
 public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
 
@@ -288,5 +289,25 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
         playerPassword = "";
         loginParent.gameObject.SetActive(true);
         loggedInParent.gameObject.SetActive(false);
+    }
+
+    public void LoadLobbyScene(string Lobby)
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void LoadScene1(string LvelOne)
+    {
+        SceneManager.LoadScene("LvelOne");
+    }
+
+    public void LoadScene2(string LevelTwo)
+    {
+        SceneManager.LoadScene("LevelTwo");
+    }
+    
+    public void LoadScene3(string LevelThree)
+    {
+        SceneManager.LoadScene("LevelThree");
     }
 }
